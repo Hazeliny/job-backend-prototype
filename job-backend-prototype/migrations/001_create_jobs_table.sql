@@ -1,0 +1,8 @@
+CREATE TABLE jobs (
+  id UUID PRIMARY KEY,
+  type TEXT NOT NULL,
+  payload JSONB,
+  status TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+);

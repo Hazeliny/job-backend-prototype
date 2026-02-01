@@ -14,7 +14,18 @@ export async function updateJobStatus(
   status: JobStatus
 ): Promise<void> {
   await db.query(
-    `UPDATE jobs SET status = $1 WHERE id = $2`,
+    `UPDATE jobs 
+    SET status = $1, updated_at = NOW()
+    WHERE id = $2`,
     [status, id]
   )
+}
+
+export async function findJobById(id: string) {
+  const result = await db.query(
+    `SELECT * FROM jobs WHERE id = $1`,
+    [id]
+  )
+
+  return result.rows[0] ?? null
 }
