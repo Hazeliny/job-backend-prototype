@@ -132,6 +132,8 @@ Response:
 }
 ```
 
+Response after insert a record into database:
+
 ![CREATEJOB0](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/ResponseAfterInsert.png)
 
 ### Get Job Status
@@ -149,11 +151,17 @@ Response:
 }
 ```
 
+Check job status through reading table before worker is triggered:
+
 ![READDB00](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/ReadDB0.png)
 
 ![READDB1](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/ReadDB1.png)
 
+Check job status through reading table after worker is triggered:
+
 ![WORKERVALIDATED](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/WorkerValidated.png)
+
+Check job status change through GET job ID after worker is triggered:
 
 ![JOBSTATUSAUTOCHANGE](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/JobStatusAutoChange.png)
 
@@ -259,28 +267,20 @@ This enables **zero-downtime deployments** and fast iteration.
 This project is intentionally built as a **backend-focused prototype**, prioritizing:
 
 	•	Correctness
-
 	•	Architecture clarity
-
 	•	Scalability
-
 	•	Cloud readiness
 
 It is suitable for:
 
 	•	Technical interviews
-
 	•	Architecture discussions
-
 	•	Cloud-native backend demonstrations
 
 ## 👤 Author
 Built by Lin - a backend engineer with experience across:
 
 	•	Banking systems (mainframe & financial software)
-
 	•	Modern full-stack development
-
 	•	Cloud-native architectures
-
 	•	Distributed and event-driven systems
