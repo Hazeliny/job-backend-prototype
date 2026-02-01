@@ -7,6 +7,7 @@ Event-driven backend prototype using Next.js, TypeScript, PostgreSQL, Docker, an
 This project is a backend-oriented prototype that demonstrates how to design and implement an asynchronous, event-driven job processing system, aligned with modern backend practices and cloud-native architectures.
 
 The system allows clients to:
+
 	•	Create background jobs via HTTP API
 	•	Process jobs asynchronously using a worker
 	•	Track job state transitions through a well-defined state machine
@@ -131,7 +132,7 @@ Response:
 }
 ```
 
-![CREATEJOB0](https://github.com/Hazeliny/ResponseAfterInsert.gif)
+![CREATEJOB0](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/ResponseAfterInsert.png)
 
 ### Get Job Status
 
@@ -148,13 +149,13 @@ Response:
 }
 ```
 
-![READDB00](https://github.com/Hazeliny/ReadDB0.gif)
+![READDB00](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/ReadDB0.png)
 
-![READDB1](https://github.com/Hazeliny/ReadDB1.gif)
+![READDB1](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/ReadDB1.png)
 
-![WORKERVALIDATED](https://github.com/Hazeliny/WorkerValidated1.gif)
+![WORKERVALIDATED](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/WorkerValidated.png)
 
-![JOBSTATUSAUTOCHANGE](https://github.com/Hazeliny/JobStatusAutoChange.gif)
+![JOBSTATUSAUTOCHANGE](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/JobStatusAutoChange.png)
 
 ## ⚙️ Local Development
 
@@ -235,6 +236,7 @@ Cloud SQL
 ## 🔁 CI/CD Automation (Planned)
 
 Planned pipeline:
+
 	1.	Push to main
 	2.	GitHub Actions / Cloud Build triggered
 	3.	Docker image built
@@ -255,19 +257,30 @@ This enables **zero-downtime deployments** and fast iteration.
 ## 🎯 Purpose of This Project
 
 This project is intentionally built as a **backend-focused prototype**, prioritizing:
+
 	•	Correctness
+
 	•	Architecture clarity
+
 	•	Scalability
+
 	•	Cloud readiness
 
 It is suitable for:
+
 	•	Technical interviews
+
 	•	Architecture discussions
+
 	•	Cloud-native backend demonstrations
 
 ## 👤 Author
 Built by Lin - a backend engineer with experience across:
+
 	•	Banking systems (mainframe & financial software)
+
 	•	Modern full-stack development
+
 	•	Cloud-native architectures
+
 	•	Distributed and event-driven systems
