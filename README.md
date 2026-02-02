@@ -15,6 +15,8 @@ The system allows clients to:
 
 Although implemented as a single service for simplicity, the architecture is intentionally designed to **map directly to a microservices + Pub/Sub setup on Google Cloud Platform (GCP)**.
 
+The project also includes a local automated testing script that simulates job creation, asynchronous processing, and loop status querying, allowing for easy demonstration of the event-driven workflow without relying on cloud infrastructure.
+
 ## 🧠 Key Concepts Demonstrated
 
 	•	Event-driven architecture
@@ -58,6 +60,36 @@ pending → processing → completed
                     ↘ failed
 ```
 
+## Automated Testing
+
+An automated testing script (`scripts/test_jobs.js`) is included to facilitate demonstration of the asynchronous job processing:
+
+- The script automatically creates a new job via `POST /api/jobs`.
+- It parses the returned `job_id` and repeatedly queries `GET /api/jobs/:id` at configurable intervals to track status changes (`pending → processing → completed`).
+- Each execution automatically increments counters in the job type and payload (e.g., `email1 → email2`, `test1@example.com → test2@example.com`) for easy repeated demonstrations.
+- This enables terminal-based, reproducible visualization of the backend workflow, without requiring external services like GCP Pub/Sub or jq for JSON parsing.
+
+### Usage
+
+Run the script via the provided Makefile target:
+
+```
+make test
+```
+
+This will:
+
+	1.	Create a new job and print the returned job details.
+	2.	Display the initial job status - pending.
+    3.  Track the job status at multiple intervals until completion.
+	4.	Automatically increment identifiers for subsequent runs, allowing repeated demonstrations.
+
+This provides a fully local, cloud-ready demonstration of the event-driven architecture.
+
+Result:
+
+![AUTOTEST](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/Autotest.png)
+
 ## 🛠️ Tech Stack
 
 ### Core Technologies
@@ -66,7 +98,7 @@ pending → processing → completed
 	•	Next.js (App Router) – API routes and server runtime
 	•	PostgreSQL – Persistent job storage
 	•	Docker & Docker Compose – Local environment orchestration
-	•	Makefile – Automation (migrations, local setup)
+	•	Makefile – Automation (migrations, local setup, automated testing)
 ```
 
 ### Planned / Future Integrations
@@ -102,6 +134,9 @@ pending → processing → completed
 │
 ├── migrations/
 │   └── 001_create_jobs_table.sql
+├── scripts/
+│   ├── test_jobs.js            # For auto-testing
+│   └── counter.json            # For auto-testing
 │
 ├── docker-compose.yml
 ├── Dockerfile
@@ -153,7 +188,7 @@ Response:
 
 Check job status through reading table before worker is triggered:
 
-![READDB00](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/ReadDB0.png)
+![READDB0](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/ReadDB0.png)
 
 ![READDB1](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/ReadDB1.png)
 
@@ -161,7 +196,7 @@ Check job status through reading table after worker is triggered:
 
 ![WORKERVALIDATED](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/WorkerValidated.png)
 
-Check job status change through GET job ID after worker is triggered:
+Check job status change through method GET job ID after worker is triggered:
 
 ![JOBSTATUSAUTOCHANGE](https://github.com/Hazeliny/job-backend-prototype/blob/main/assets/JobStatusAutoChange.png)
 

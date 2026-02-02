@@ -9,3 +9,8 @@ build:
 
 dev:
 	npm run dev
+
+test:
+	node scripts/test_jobs.js
+
+.PHONY: up down build dev test
