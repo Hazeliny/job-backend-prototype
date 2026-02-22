@@ -308,7 +308,7 @@ This project is intentionally built as a **backend-focused prototype**, prioriti
 
 It is suitable for:
 
-	•	Technical interviews
+	•	Technical demos
 	•	Architecture discussions
 	•	Cloud-native backend demonstrations
 
